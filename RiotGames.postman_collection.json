@@ -1,0 +1,1361 @@
+{
+	"info": {
+		"_postman_id": "bdec2c41-537b-4264-97e9-3c5daecf6683",
+		"name": "RiotGames",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Tests",
+			"item": [
+				{
+					"name": "getContentsValorant",
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "key",
+									"value": "api_key",
+									"type": "string"
+								},
+								{
+									"key": "in",
+									"value": "query",
+									"type": "string"
+								},
+								{
+									"key": "value",
+									"value": "{{key}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://eu.api.riotgames.com/val/content/v1/contents",
+							"protocol": "https",
+							"host": [
+								"eu",
+								"api",
+								"riotgames",
+								"com"
+							],
+							"path": [
+								"val",
+								"content",
+								"v1",
+								"contents"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getMatchInfoValorant",
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "key",
+									"value": "api_key",
+									"type": "string"
+								},
+								{
+									"key": "in",
+									"value": "query",
+									"type": "string"
+								},
+								{
+									"key": "value",
+									"value": "{{key}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://eu.api.riotgames.com/val/match/v1/matches/{matchId}",
+							"protocol": "https",
+							"host": [
+								"eu",
+								"api",
+								"riotgames",
+								"com"
+							],
+							"path": [
+								"val",
+								"match",
+								"v1",
+								"matches",
+								"{matchId}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getAccountDtoLeagueM2",
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "key",
+									"value": "api_key",
+									"type": "string"
+								},
+								{
+									"key": "in",
+									"value": "query",
+									"type": "string"
+								},
+								{
+									"key": "value",
+									"value": "{{key}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://europe.api.riotgames.com/riot/account/v1/accounts/by-puuid/J3siPqtvZPvw6yWQfZflNz_s62X91J3usTQZxU14FtOICrZKkw5VrLtILmf4tfcqXZFBrjUVC1bywA",
+							"protocol": "https",
+							"host": [
+								"europe",
+								"api",
+								"riotgames",
+								"com"
+							],
+							"path": [
+								"riot",
+								"account",
+								"v1",
+								"accounts",
+								"by-puuid",
+								"J3siPqtvZPvw6yWQfZflNz_s62X91J3usTQZxU14FtOICrZKkw5VrLtILmf4tfcqXZFBrjUVC1bywA"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getAccountDtoLeagueM1",
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "key",
+									"value": "api_key",
+									"type": "string"
+								},
+								{
+									"key": "in",
+									"value": "query",
+									"type": "string"
+								},
+								{
+									"key": "value",
+									"value": "{{key}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://europe.api.riotgames.com/riot/account/v1/accounts/by-riot-id/rickbruno99/EUW1",
+							"protocol": "https",
+							"host": [
+								"europe",
+								"api",
+								"riotgames",
+								"com"
+							],
+							"path": [
+								"riot",
+								"account",
+								"v1",
+								"accounts",
+								"by-riot-id",
+								"rickbruno99",
+								"EUW1"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "League Of Legends",
+			"item": [
+				{
+					"name": "User 1st match in list",
+					"item": [
+						{
+							"name": "getSummonerId",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"let response = pm.response.json();\r",
+											"var accountID = response[\"accountId\"];\r",
+											"pm.collectionVariables.set(\"encryptedAccountId\", accountID);\r",
+											"var summonerID = response[\"id\"];\r",
+											"pm.collectionVariables.set(\"summonerId\", summonerID);"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://euw1.api.riotgames.com/lol/summoner/v4/summoners/by-name/{{playerName}}",
+									"protocol": "https",
+									"host": [
+										"euw1",
+										"api",
+										"riotgames",
+										"com"
+									],
+									"path": [
+										"lol",
+										"summoner",
+										"v4",
+										"summoners",
+										"by-name",
+										"{{playerName}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getMatchList",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"let response = pm.response.json();\r",
+											"var matchId = response[\"matches\"][0].gameId;\r",
+											"pm.collectionVariables.set(\"matchId\", matchId);\r",
+											"var champion = response[\"matches\"][0].champion\r",
+											"pm.collectionVariables.set(\"championID\", champion);"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://euw1.api.riotgames.com/lol/match/v4/matchlists/by-account/{{encryptedAccountId}}",
+									"protocol": "https",
+									"host": [
+										"euw1",
+										"api",
+										"riotgames",
+										"com"
+									],
+									"path": [
+										"lol",
+										"match",
+										"v4",
+										"matchlists",
+										"by-account",
+										"{{encryptedAccountId}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getMatchInfoByGameId",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://euw1.api.riotgames.com/lol/match/v4/matches/{{matchId}}",
+									"protocol": "https",
+									"host": [
+										"euw1",
+										"api",
+										"riotgames",
+										"com"
+									],
+									"path": [
+										"lol",
+										"match",
+										"v4",
+										"matches",
+										"{{matchId}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getTimelinesByGameId",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://euw1.api.riotgames.com/lol/match/v4/timelines/by-match/{{matchId}}",
+									"protocol": "https",
+									"host": [
+										"euw1",
+										"api",
+										"riotgames",
+										"com"
+									],
+									"path": [
+										"lol",
+										"match",
+										"v4",
+										"timelines",
+										"by-match",
+										"{{matchId}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getChampionIdByName",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"let response = pm.response.json();\r",
+											"var championName = pm.collectionVariables.get(\"championName\");\r",
+											"var championId = response[\"data\"][championName].key;\r",
+											"pm.collectionVariables.set(\"championID\", championId);\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://ddragon.leagueoflegends.com/cdn/11.4.1/data/en_US/champion.json",
+									"protocol": "https",
+									"host": [
+										"ddragon",
+										"leagueoflegends",
+										"com"
+									],
+									"path": [
+										"cdn",
+										"11.4.1",
+										"data",
+										"en_US",
+										"champion.json"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getChampionMasteryAll",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://euw1.api.riotgames.com/lol/champion-mastery/v4/champion-masteries/by-summoner/{{summonerId}}",
+									"protocol": "https",
+									"host": [
+										"euw1",
+										"api",
+										"riotgames",
+										"com"
+									],
+									"path": [
+										"lol",
+										"champion-mastery",
+										"v4",
+										"champion-masteries",
+										"by-summoner",
+										"{{summonerId}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getChampionMasteryById",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://euw1.api.riotgames.com/lol/champion-mastery/v4/champion-masteries/by-summoner/{{summonerId}}/by-champion/{{championID}}",
+									"protocol": "https",
+									"host": [
+										"euw1",
+										"api",
+										"riotgames",
+										"com"
+									],
+									"path": [
+										"lol",
+										"champion-mastery",
+										"v4",
+										"champion-masteries",
+										"by-summoner",
+										"{{summonerId}}",
+										"by-champion",
+										"{{championID}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getChampionNameById",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"let response = pm.response.json();\r",
+											"var championId = pm.collectionVariables.get(\"championID\");\r",
+											"var Name = response[\"data\"][\"key\"][\"id\"];\r",
+											"pm.collectionVariables.set(\"championName\", Name);"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://ddragon.leagueoflegends.com/cdn/11.4.1/data/en_US/champion.json",
+									"protocol": "https",
+									"host": [
+										"ddragon",
+										"leagueoflegends",
+										"com"
+									],
+									"path": [
+										"cdn",
+										"11.4.1",
+										"data",
+										"en_US",
+										"champion.json"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Definitive",
+					"item": [
+						{
+							"name": "User Info",
+							"item": [
+								{
+									"name": "getSummonerIdAndEncryptedAccountId",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"let response = pm.response.json();\r",
+													"var accountID = response[\"accountId\"];\r",
+													"pm.collectionVariables.set(\"encryptedAccountId\", accountID);\r",
+													"var summonerID = response[\"id\"];\r",
+													"pm.collectionVariables.set(\"summonerId\", summonerID);"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "https://euw1.api.riotgames.com/lol/summoner/v4/summoners/by-name/{{playerName}}",
+											"protocol": "https",
+											"host": [
+												"euw1",
+												"api",
+												"riotgames",
+												"com"
+											],
+											"path": [
+												"lol",
+												"summoner",
+												"v4",
+												"summoners",
+												"by-name",
+												"{{playerName}}"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "getSummonerIdAndEncryptedAccountId_2",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"let response = pm.response.json();\r",
+													"var accountID = response[\"accountId\"];\r",
+													"pm.collectionVariables.set(\"encryptedAccountId2\", accountID);\r",
+													"var summonerID = response[\"id\"];\r",
+													"pm.collectionVariables.set(\"summonerId2\", summonerID);"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "https://euw1.api.riotgames.com/lol/summoner/v4/summoners/by-name/{{playerName2}}",
+											"protocol": "https",
+											"host": [
+												"euw1",
+												"api",
+												"riotgames",
+												"com"
+											],
+											"path": [
+												"lol",
+												"summoner",
+												"v4",
+												"summoners",
+												"by-name",
+												"{{playerName2}}"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Matches Info",
+							"item": [
+								{
+									"name": "getPlayerFullMatchList",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "https://euw1.api.riotgames.com/lol/match/v4/matchlists/by-account/{{encryptedAccountId}}",
+											"protocol": "https",
+											"host": [
+												"euw1",
+												"api",
+												"riotgames",
+												"com"
+											],
+											"path": [
+												"lol",
+												"match",
+												"v4",
+												"matchlists",
+												"by-account",
+												"{{encryptedAccountId}}"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "getLast3GamesPlayed",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "https://euw1.api.riotgames.com/lol/match/v4/matchlists/by-account/{{encryptedAccountId}}?endIndex=3&beginIndex=0",
+											"protocol": "https",
+											"host": [
+												"euw1",
+												"api",
+												"riotgames",
+												"com"
+											],
+											"path": [
+												"lol",
+												"match",
+												"v4",
+												"matchlists",
+												"by-account",
+												"{{encryptedAccountId}}"
+											],
+											"query": [
+												{
+													"key": "endIndex",
+													"value": "3"
+												},
+												{
+													"key": "beginIndex",
+													"value": "0"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "getLastestGameId",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"let response = pm.response.json();\r",
+													"var matchId = response[\"matches\"][0].gameId;\r",
+													"pm.collectionVariables.set(\"matchId\", matchId);\r",
+													""
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "https://euw1.api.riotgames.com/lol/match/v4/matchlists/by-account/{{encryptedAccountId}}",
+											"protocol": "https",
+											"host": [
+												"euw1",
+												"api",
+												"riotgames",
+												"com"
+											],
+											"path": [
+												"lol",
+												"match",
+												"v4",
+												"matchlists",
+												"by-account",
+												"{{encryptedAccountId}}"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "getMatchInfoByGameId",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "https://euw1.api.riotgames.com/lol/match/v4/matches/{{matchId}}",
+											"protocol": "https",
+											"host": [
+												"euw1",
+												"api",
+												"riotgames",
+												"com"
+											],
+											"path": [
+												"lol",
+												"match",
+												"v4",
+												"matches",
+												"{{matchId}}"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "getChampionIdPlayedLatestMatch",
+									"event": [
+										{
+											"listen": "prerequest",
+											"script": {
+												"exec": [
+													""
+												],
+												"type": "text/javascript"
+											}
+										},
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"let response = pm.response.json();\r",
+													"var championID = response[\"matches\"][0].champion\r",
+													"pm.collectionVariables.set(\"championId\", championID);"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "https://euw1.api.riotgames.com/lol/match/v4/matchlists/by-account/{{encryptedAccountId}}",
+											"protocol": "https",
+											"host": [
+												"euw1",
+												"api",
+												"riotgames",
+												"com"
+											],
+											"path": [
+												"lol",
+												"match",
+												"v4",
+												"matchlists",
+												"by-account",
+												"{{encryptedAccountId}}"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Champion Info",
+							"item": [
+								{
+									"name": "getChampionKeyByName",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"let response = pm.response.json();\r",
+													"var championName = pm.collectionVariables.get(\"championName\");\r",
+													"var championID = response[\"data\"][championName].key;\r",
+													"pm.collectionVariables.set(\"championId\", championID);\r",
+													""
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "https://ddragon.leagueoflegends.com/cdn/11.4.1/data/en_US/champion.json",
+											"protocol": "https",
+											"host": [
+												"ddragon",
+												"leagueoflegends",
+												"com"
+											],
+											"path": [
+												"cdn",
+												"11.4.1",
+												"data",
+												"en_US",
+												"champion.json"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "getChampionNameByKey",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"let response = pm.response.json();\r",
+													"var championID = pm.collectionVariables.get(\"championId\");  \r",
+													"\r",
+													"for(var champ in response.data) {\r",
+													"    if (championID == response[\"data\"][champ].key)\r",
+													"        pm.collectionVariables.set(\"championName\", response[\"data\"][champ].id);\r",
+													"}"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "https://ddragon.leagueoflegends.com/cdn/11.4.1/data/en_US/champion.json",
+											"protocol": "https",
+											"host": [
+												"ddragon",
+												"leagueoflegends",
+												"com"
+											],
+											"path": [
+												"cdn",
+												"11.4.1",
+												"data",
+												"en_US",
+												"champion.json"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "getChampionInfoByName",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													""
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "https://ddragon.leagueoflegends.com/cdn/11.4.1/data/en_US/champion/{{championName}}.json",
+											"protocol": "https",
+											"host": [
+												"ddragon",
+												"leagueoflegends",
+												"com"
+											],
+											"path": [
+												"cdn",
+												"11.4.1",
+												"data",
+												"en_US",
+												"champion",
+												"{{championName}}.json"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "getChampionMasteryFromUserById",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "https://euw1.api.riotgames.com/lol/champion-mastery/v4/champion-masteries/by-summoner/{{summonerId}}/by-champion/{{championId}}",
+											"protocol": "https",
+											"host": [
+												"euw1",
+												"api",
+												"riotgames",
+												"com"
+											],
+											"path": [
+												"lol",
+												"champion-mastery",
+												"v4",
+												"champion-masteries",
+												"by-summoner",
+												"{{summonerId}}",
+												"by-champion",
+												"{{championId}}"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "getChampionRotation",
+									"event": [
+										{
+											"listen": "prerequest",
+											"script": {
+												"exec": [
+													""
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "https://euw1.api.riotgames.com/lol/platform/v3/champion-rotations",
+											"protocol": "https",
+											"host": [
+												"euw1",
+												"api",
+												"riotgames",
+												"com"
+											],
+											"path": [
+												"lol",
+												"platform",
+												"v3",
+												"champion-rotations"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Create Tournament",
+							"item": [
+								{
+									"name": "createNewTournamentProvider",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"let response = pm.response.json();\r",
+													"var providerID = response;\r",
+													"pm.collectionVariables.set(\"provider\", providerID);"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n  \"region\": \"EUW\",\r\n  \"url\": \"https://www.exampletournament.com\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://americas.api.riotgames.com/lol/tournament-stub/v4/providers",
+											"protocol": "https",
+											"host": [
+												"americas",
+												"api",
+												"riotgames",
+												"com"
+											],
+											"path": [
+												"lol",
+												"tournament-stub",
+												"v4",
+												"providers"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "createMockTournament",
+									"event": [
+										{
+											"listen": "prerequest",
+											"script": {
+												"exec": [
+													""
+												],
+												"type": "text/javascript"
+											}
+										},
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"let response = pm.response.json();\r",
+													"var tournamentID = response;\r",
+													"pm.collectionVariables.set(\"tournament\", tournamentID);"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\"name\": \"ISMAI Legends\", \"providerId\": \"{{provider}}\"}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://americas.api.riotgames.com/lol/tournament-stub/v4/tournaments",
+											"protocol": "https",
+											"host": [
+												"americas",
+												"api",
+												"riotgames",
+												"com"
+											],
+											"path": [
+												"lol",
+												"tournament-stub",
+												"v4",
+												"tournaments"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "createTournamentCodes",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"let response = pm.response.json();\r",
+													"var tournamentCODE = response[0];\r",
+													"pm.collectionVariables.set(\"tournamentCode\", tournamentCODE)"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\"allowedSummonerIds\": [\"{{summonerId}}\", \"{{summonerId2}}\"],\r\n  \"mapType\": \"SUMMONERS_RIFT\",\r\n  \"metadata\": \"\",\r\n  \"pickType\": \"TOURNAMENT_DRAFT\",\r\n  \"spectatorType\": \"ALL\",\r\n  \"teamSize\": 1}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://americas.api.riotgames.com/lol/tournament-stub/v4/codes?count={{count}}&tournamentId={{tournament}}",
+											"protocol": "https",
+											"host": [
+												"americas",
+												"api",
+												"riotgames",
+												"com"
+											],
+											"path": [
+												"lol",
+												"tournament-stub",
+												"v4",
+												"codes"
+											],
+											"query": [
+												{
+													"key": "count",
+													"value": "{{count}}"
+												},
+												{
+													"key": "tournamentId",
+													"value": "{{tournament}}"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "getLobbyEventsByTournamentCode",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "https://americas.api.riotgames.com/lol/tournament-stub/v4/lobby-events/by-code/{{tournament}}",
+											"protocol": "https",
+											"host": [
+												"americas",
+												"api",
+												"riotgames",
+												"com"
+											],
+											"path": [
+												"lol",
+												"tournament-stub",
+												"v4",
+												"lobby-events",
+												"by-code",
+												"{{tournament}}"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Ranked Top Chart",
+							"item": [
+								{
+									"name": "getTopPlayersRankedSolo5x5",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "https://euw1.api.riotgames.com/lol/league-exp/v4/entries/RANKED_SOLO_5x5/CHALLENGER/I?page=1",
+											"protocol": "https",
+											"host": [
+												"euw1",
+												"api",
+												"riotgames",
+												"com"
+											],
+											"path": [
+												"lol",
+												"league-exp",
+												"v4",
+												"entries",
+												"RANKED_SOLO_5x5",
+												"CHALLENGER",
+												"I"
+											],
+											"query": [
+												{
+													"key": "page",
+													"value": "1"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "getTopPlayersRankedFlexSR",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "https://euw1.api.riotgames.com/lol/league-exp/v4/entries/RANKED_FLEX_SR/CHALLENGER/I?page=1",
+											"protocol": "https",
+											"host": [
+												"euw1",
+												"api",
+												"riotgames",
+												"com"
+											],
+											"path": [
+												"lol",
+												"league-exp",
+												"v4",
+												"entries",
+												"RANKED_FLEX_SR",
+												"CHALLENGER",
+												"I"
+											],
+											"query": [
+												{
+													"key": "page",
+													"value": "1"
+												}
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Items",
+							"item": [
+								{
+									"name": "getItems",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "http://ddragon.leagueoflegends.com/cdn/11.5.1/data/en_US/item.json",
+											"protocol": "http",
+											"host": [
+												"ddragon",
+												"leagueoflegends",
+												"com"
+											],
+											"path": [
+												"cdn",
+												"11.5.1",
+												"data",
+												"en_US",
+												"item.json"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						}
+					]
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "apikey",
+		"apikey": [
+			{
+				"key": "value",
+				"value": "RGAPI-568c6806-907d-4ff3-a937-61d9fbe71679",
+				"type": "string"
+			},
+			{
+				"key": "key",
+				"value": "X-Riot-Token",
+				"type": "string"
+			},
+			{
+				"key": "in",
+				"value": "header",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "playerName",
+			"value": "Guylhermers"
+		},
+		{
+			"key": "summonerId",
+			"value": "QGN8RHxh07i3cT35mgOMb7hncCBRVt3PlpMTmH5YoyTf-jY"
+		},
+		{
+			"key": "encryptedAccountId",
+			"value": "oqdYiRapYHXKUxN7r1SSDxgEgI_2oyjeg-AJsi2NwnTMZQ"
+		},
+		{
+			"key": "matchId",
+			"value": 5128895393
+		},
+		{
+			"key": "championName",
+			"value": "MonkeyKing"
+		},
+		{
+			"key": "championId",
+			"value": 62
+		},
+		{
+			"key": "provider",
+			"value": 563
+		},
+		{
+			"key": "tournament",
+			"value": 6793
+		},
+		{
+			"key": "count",
+			"value": "10"
+		},
+		{
+			"key": "playerName2",
+			"value": "HughLance"
+		},
+		{
+			"key": "encryptedAccountId2",
+			"value": "BcO-YvpuxSb8mqudkbZYN627i92IISka4oyG4ilw1Ki1lp0RaY6GolJl"
+		},
+		{
+			"key": "summonerId2",
+			"value": "TyCWD8CGSgY5MUmlP0oiv2H3tt5JVE547X_ZEsoiII6-kbTU"
+		},
+		{
+			"key": "tournamentCode",
+			"value": "EUW6793-TOURNAMENTCODE0001"
+		},
+		{
+			"key": "championID",
+			"value": "25"
+		}
+	]
+}
